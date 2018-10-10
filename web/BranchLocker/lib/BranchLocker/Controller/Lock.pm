@@ -157,8 +157,17 @@ sub lock :Global {
         $lock->{'request_change'} = $email_link;
     }
 
-    $c->stash->{'lock'    } = $lock;
-    $c->stash->{'template'} = 'lock.tt2';
+    my $bread_crumbs = [
+        { 'link' => $c->uri_for('/'), 'name' => 'Home' },
+    ];
+
+    my $link_to_audit_trail = $c->uri_for('/audittrail')
+        . "?object=lock&id=$lock_id";
+
+    $c->stash->{'lock'               } = $lock;
+    $c->stash->{'bread_crumbs'       } = $bread_crumbs;
+    $c->stash->{'link_to_audit_trail'} = $link_to_audit_trail;
+    $c->stash->{'template'           } = 'lock.tt2';
 }
 
 __PACKAGE__->meta->make_immutable;

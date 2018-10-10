@@ -18,9 +18,6 @@ limitations under the License.
 %]
 
 [% META title = 'Welcome to Branch Locker' %]
-<div class="bread-crumbs">
-    <a href="[% c.uri_for('/') %]">Home</a>
-</div>
 <div class="lock-data">
     <h1>[% lock.name | html%]</h1>
     <div class="view-lock">
@@ -166,4 +163,18 @@ limitations under the License.
         <br/>
         [% END %]
     </div>
+    <div class="audit-trail">
+        <h2>Audit-Trail:</h2>
+        <div class="audit-trail-data audit-break">
+            <div class="view-audit-trail">
+                <table>
+                    <tr><td>Click <a
+                        class="audit-trail-link"
+                        href="[% link_to_audit_trail %]"
+                    >here</a> to view audit trail.</td></tr>
+                </table>
+            </div>
+        </div>
+    </div>
 </div>
+<script type="text/javascript">rewriteAuditTrailLinks();</script>

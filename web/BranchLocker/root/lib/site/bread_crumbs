@@ -17,21 +17,11 @@ limitations under the License.
 
 %]
 
-[% META title = 'Welcome to Branch Locker' %]
-
-<div class="branch-tabs">
-    <ul class="tab">
-        [% FOREACH group IN groups %]
-        <li><a
-            href="/group_locks?grouped=[% group | html %]"
-            class="branch-tab-link"
-        >[% group | html %]</a></li>
-        [% END %]
-    </ul>
+[% IF bread_crumbs.defined %]
+<div class="bread-crumbs">
+    [% FOREACH crumb IN bread_crumbs %]
+        [% IF loop.index > 0 %]&gt;[% END %]
+    <a href="[% crumb.link | html %]">[% crumb.name | html %]</a>
+    [% END %]
 </div>
-
-<div class="branch-data">
-<h1>Please select a branch lock group.</h1>
-</div>
-
-<script type="text/javascript">rewriteBranchTabLinks();</script>
+[% END %]
